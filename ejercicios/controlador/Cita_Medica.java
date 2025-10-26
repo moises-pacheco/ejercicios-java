@@ -38,26 +38,43 @@ public class Cita_Medica {
         //Total
         double totalPCR = 0, totalADS = 0;
 
+        System.out.println("Bienvenido a la cita médica");
+
         do {
 
-            System.out.println("Bienvenido a la consulta médica. \n¿Cuál es su motivo de asistencia?: [Número 1: ANÁLISIS DE SANGRE / Número 2: PRUEBA COVID-19]");
+            System.out.println("⬇ ¿Cuál es el motivo de asistencia? ⬇ \n1 -> Análisis de sangre \n2 -> Prueba COVID-19\nIntroduzca el número dependiendo de lo que necesite: ");
+
+            do {
+                respuestaUsuario = sc.nextInt();
+
+                switch (respuestaUsuario) {
+                    case 1:
+                        pruebaAnalisisDeSangre++;
+                        System.out.println("Usted viene por 'analisis de sangre'.\nDiríjase a la sala 200 por favor.");
+                        break;
+
+                    case 2:
+                        pruebaPCR++;
+                        System.out.println("Usted viene por 'prueba de PCR'.\nDiríjase a la sala 204 por favor.");
+                        break;
+
+                    default:
+                        System.out.println("Introduce un número válido, por favor.");
+                }
+
+            }while (respuestaUsuario != 1 &&  respuestaUsuario != 2);
+
+            System.out.println("----");
+            System.out.println("¿Hay más pacientes en la fila?\n1 -> Si\n0 -> No");
+            do{
+
             respuestaUsuario = sc.nextInt();
 
-
-            switch (respuestaUsuario) {
-                case 1:
-                    pruebaAnalisisDeSangre++;
-                    System.out.println("Diríjase a la sala de análisis de sangre, por favor.");
-                    break;
-
-                case 2:
-                    pruebaPCR++;
-                    System.out.println("Diríjase a la sala de prueba PCR, por favor.");
-                    break;
+            if(respuestaUsuario != 1 && respuestaUsuario != 0){
+                System.out.println("Introduce un número válido. Por favor.");
             }
 
-            System.out.println("¿Hay más pacientes en la fila? [1: SI / 0: NO");
-            respuestaUsuario = sc.nextInt();
+            }while(respuestaUsuario != 1 && respuestaUsuario != 0);
 
         } while (respuestaUsuario != 0);
 
@@ -66,7 +83,8 @@ public class Cita_Medica {
         totalPCR = pruebaPCR * precioPCR;
 
         //Indicamos cuánto ha generado cada consulta:
-        System.out.println("La prueba de análisis de sangre ha obtenido un total de: " + totalADS + "€\nLa prueba de COVID-19 ha obtenido un total de: " + totalPCR + "€");
+        System.out.println("-------------------------\n");
+        System.out.println("ANÁLISIS DE SANGRE: Total de citas: " + pruebaAnalisisDeSangre + ". Ganancias: " + totalADS + "€\nPRUEBA COVID-19: Total de citas: " + pruebaPCR + ". Ganancias: " + totalPCR + "€");
 
     }
 }
