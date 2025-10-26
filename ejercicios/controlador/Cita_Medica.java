@@ -40,45 +40,58 @@ public class Cita_Medica {
 
         System.out.println("Bienvenido a la cita médica");
 
+        //El bucle se repetirá siempre que exista algún paciente en la fila.
         do {
 
+            //Se le pregunta al paciente cuál es el motivo de sus asistencia.
             System.out.println("⬇ ¿Cuál es el motivo de asistencia? ⬇ \n1 -> Análisis de sangre \n2 -> Prueba COVID-19\nIntroduzca el número dependiendo de lo que necesite: ");
 
+            //Restringimos las respuestas que no sean dadas por el programa y se repitará hasta que se introduzca un dato válido.
             do {
+                //Se almacena la respuesta del usuario.
                 respuestaUsuario = sc.nextInt();
 
+                //Dependiendo de lo que seleccione el usuario, se realizará alguna acción.
                 switch (respuestaUsuario) {
+                    //Si selecciona la prueba de 'Análisis de sangre' se le sumará una asistencia a la consulta.
                     case 1:
                         pruebaAnalisisDeSangre++;
                         System.out.println("Usted viene por 'analisis de sangre'.\nDiríjase a la sala 200 por favor.");
                         break;
 
+                    //Si selecciona la prueba de 'PCR' se le sumará una asistencia a la consulta.
                     case 2:
                         pruebaPCR++;
                         System.out.println("Usted viene por 'prueba de PCR'.\nDiríjase a la sala 204 por favor.");
                         break;
 
+                    //Si no es ninguna de las anteriores, le indicamos al usuario que tiene que introducir un valor válido.
                     default:
                         System.out.println("Introduce un número válido, por favor.");
                 }
 
-            }while (respuestaUsuario != 1 &&  respuestaUsuario != 2);
+            } while (respuestaUsuario != 1 && respuestaUsuario != 2); //El bucle se repetirá  hasta que el usuario introduzca un valor válido.
 
+            //Se le pregunta al usuario si existen más pacientes en la fila.
             System.out.println("----");
             System.out.println("¿Hay más pacientes en la fila?\n1 -> Si\n0 -> No");
-            do{
 
-            respuestaUsuario = sc.nextInt();
+            //El bucle se repetirá siempre y cuando el usuario introduzca un dato inválido.
+            do {
 
-            if(respuestaUsuario != 1 && respuestaUsuario != 0){
-                System.out.println("Introduce un número válido. Por favor.");
-            }
+                //Se almacena la respuesta del usuario.
+                respuestaUsuario = sc.nextInt();
 
-            }while(respuestaUsuario != 1 && respuestaUsuario != 0);
+                //Si la respuesta NO es un valor válido, se le comunicará al usuario que seleccione un dato válido.
+                if (respuestaUsuario != 1 && respuestaUsuario != 0) {
+                    System.out.println("Introduce un número válido. Por favor.");
+                }
 
-        } while (respuestaUsuario != 0);
+            } while (respuestaUsuario != 1 && respuestaUsuario != 0); //El bucle se repetirá siempre y cuando el usuario introduzca un dato inválido.
 
-        //Caulcular cuántas citas ha tenido cada consulta.
+        } while (respuestaUsuario != 0); //El bucle se repetirá siempre que exista algún paciente en la fila.
+
+        //Caulcular cuántas citas ha tenido cada consulta y las ganancias de las mismas.
         totalADS = pruebaAnalisisDeSangre * precioADS;
         totalPCR = pruebaPCR * precioPCR;
 
