@@ -1,5 +1,7 @@
 package controlador;
 
+import java.util.Scanner;
+
 public class Cita_Medica {
     public static void main(String[] args) {
         //Programa para gestionar los dos tipos de cita.
@@ -23,5 +25,48 @@ public class Cita_Medica {
 
              El análisis de sangre cuesta 60 euros y la prueba del covid 120.
          */
+
+        //Scanner para poder obtener la respuesta el usuario.
+        Scanner sc = new Scanner(System.in);
+
+        //Variables para almacenar la suma se asistencias para cada prueba.
+        int pruebaPCR = 0, pruebaAnalisisDeSangre = 0, respuestaUsuario;
+
+        //Precio de cada consulta:
+        double precioPCR = 120, precioADS = 60;
+
+        //Total
+        double totalPCR = 0, totalADS = 0;
+
+        do {
+
+            System.out.println("Bienvenido a la consulta médica. \n¿Cuál es su motivo de asistencia?: [Número 1: ANÁLISIS DE SANGRE / Número 2: PRUEBA COVID-19]");
+            respuestaUsuario = sc.nextInt();
+
+
+            switch (respuestaUsuario) {
+                case 1:
+                    pruebaAnalisisDeSangre++;
+                    System.out.println("Diríjase a la sala de análisis de sangre, por favor.");
+                    break;
+
+                case 2:
+                    pruebaPCR++;
+                    System.out.println("Diríjase a la sala de prueba PCR, por favor.");
+                    break;
+            }
+
+            System.out.println("¿Hay más pacientes en la fila? [1: SI / 0: NO");
+            respuestaUsuario = sc.nextInt();
+
+        } while (respuestaUsuario != 0);
+
+        //Caulcular cuántas citas ha tenido cada consulta.
+        totalADS = pruebaAnalisisDeSangre * precioADS;
+        totalPCR = pruebaPCR * precioPCR;
+
+        //Indicamos cuánto ha generado cada consulta:
+        System.out.println("La prueba de análisis de sangre ha obtenido un total de: " + totalADS + "€\nLa prueba de COVID-19 ha obtenido un total de: " + totalPCR + "€");
+
     }
 }
