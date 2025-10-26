@@ -55,16 +55,16 @@ public class Cita_Medica {
 
                 //Dependiendo de lo que seleccione el usuario, se realizará alguna acción.
                 switch (respuestaUsuario) {
-                    //Si selecciona la prueba de 'Análisis de sangre' se le sumará una asistencia a la consulta.
+                    //Si selecciona la prueba de 'Análisis de sangre' se le sumará una asistencia a la consulta y se imprimirá el número de turno siguiente.
                     case 1:
                         pruebaAnalisisDeSangre++;
-                        System.out.println("Usted viene por 'analisis de sangre'.\nDiríjase a la sala 200 por favor.");
+                        System.out.println("Analisis de sangre. Turno: [" + (pruebaAnalisisDeSangre + 1)  + "]." );
                         break;
 
-                    //Si selecciona la prueba de 'PCR' se le sumará una asistencia a la consulta.
+                    //Si selecciona la prueba de 'PCR' se le sumará una asistencia a la consulta y se imprimirá el número de turno siguiente.
                     case 2:
                         pruebaPCR++;
-                        System.out.println("Usted viene por 'prueba de PCR'.\nDiríjase a la sala 204 por favor.");
+                        System.out.println("Prueba de COVID-19. Turno: [" + (pruebaPCR + 1)  + "].");
                         break;
 
                     //Si no es ninguna de las anteriores, le indicamos al usuario que tiene que introducir un valor válido.
@@ -76,7 +76,7 @@ public class Cita_Medica {
 
             //Se le pregunta al usuario si existen más pacientes en la fila.
             System.out.println("----");
-            System.out.println("¿Hay más pacientes en la fila?\n1 -> Si\n0 -> No");
+            System.out.println("¿Se han terminado las consultas?\n1 -> NO\n0 -> SI");
 
             //El bucle se repetirá siempre y cuando el usuario introduzca un dato inválido.
             do {
