@@ -28,9 +28,11 @@ public class Cita_Medica {
 
         //Scanner para poder obtener la respuesta el usuario.
         Scanner sc = new Scanner(System.in);
+        //Variable para almacenar la respuesta del usuario.
+        int respuestaUsuario;
 
         //Variables para almacenar la suma se asistencias para cada prueba.
-        int pruebaPCR = 0, pruebaAnalisisDeSangre = 0, respuestaUsuario;
+        int pruebaPCR = 0, pruebaAnalisisDeSangre = 0;
 
         //Precio de cada consulta:
         double precioPCR = 120, precioADS = 60;
@@ -82,7 +84,7 @@ public class Cita_Medica {
                 //Se almacena la respuesta del usuario.
                 respuestaUsuario = sc.nextInt();
 
-                //Si la respuesta NO es un valor válido, se le comunicará al usuario que seleccione un dato válido.
+                //Si la respuesta no es un valor válido, se le comunicará al usuario que seleccione un dato válido.
                 if (respuestaUsuario != 1 && respuestaUsuario != 0) {
                     System.out.println("Introduce un número válido. Por favor.");
                 }
@@ -91,7 +93,7 @@ public class Cita_Medica {
 
         } while (respuestaUsuario != 0); //El bucle se repetirá siempre que exista algún paciente en la fila.
 
-        //Caulcular cuántas citas ha tenido cada consulta y las ganancias de las mismas.
+        //Calcular cuántas citas ha tenido cada consulta y las ganancias de las mismas.
         totalADS = pruebaAnalisisDeSangre * precioADS;
         totalPCR = pruebaPCR * precioPCR;
 
